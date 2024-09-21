@@ -13,4 +13,4 @@ aux_source_directory(./src SRC_LIST)
 add_executable(server ${SRC_LIST})
 
 find_package(Threads REQUIRED)
-target_link_libraries(main PUBLIC Threads::Threads)
+target_link_libraries(server PUBLIC Threads::Threads)
