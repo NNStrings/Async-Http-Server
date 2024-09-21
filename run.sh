@@ -8,4 +8,4 @@ make -C build || { echo "make build failed"; exit 1; }
 
 echo "------------ Result ------------"
 
-./build/main || { echo "return $?"; }
+./build/server || { echo "return $?"; }
