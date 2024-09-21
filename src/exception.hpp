@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <system_error>
 #include <print>
+#include <fmt/format.h>
 #include <netdb.h>
 
 template <typename T>
@@ -38,12 +39,13 @@ struct exception {
             std::println(stderr, "{}: {}", what, ec.message());
             throw std::system_error(ec, what);
         }
+        return m_res;
     }
 
     T value() const {
         if (m_res < 0) {
             auto ec = error_code();
-            fmt::print(stderr, "{}", ec.message());
+            std::println(stderr, "{}", ec.message());
             throw std::system_error(ec);
         }
         return m_res;
@@ -58,7 +60,7 @@ struct exception {
 template <typename U, typename T>
 exception<U> convert_error(T res) {
     if (res == -1) {
-        return -errno
+        return -errno;
     }
     return res;
 }

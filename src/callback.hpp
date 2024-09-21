@@ -52,7 +52,7 @@ struct callback {
 
     static callback from_address(void *addr) {
         callback cb;
-        cb.m_base = std::unique_ptr<_callback_base>(static_cast<_callback_base>(addr));
+        cb.m_base = std::unique_ptr<_callback_base>(static_cast<_callback_base *>(addr));
         return cb;
     }
 };
